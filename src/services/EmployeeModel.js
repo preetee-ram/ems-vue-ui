@@ -25,13 +25,22 @@ export const EmployeeModel = {
     }
 
     if (!employee.address || employee.address.trim() === "") {
-      errors.age = "address cannot be empty!";
-    }
-    if (employee.address.length < 2) {
+      errors.address = "address cannot be empty!";
+    } else if (employee.address.length < 2) {
       errors.address = "address is too short!";
-    }
-    if (employee.address.length > 250) {
+    } else if (employee.address.length > 250) {
       errors.address = "address cannot be greater than 250 characters!";
+    }
+    if (!employee.department) {
+      errors.department = "department cannot be empty!";
+    }
+    if (!employee.designation) {
+      errors.designation = "designation cannot be empty!";
+    }
+    if (!employee.salary) {
+      errors.salary = "salary cannot be empty!";
+    } else if (employee.salary <= 0) {
+      errors.salary = "salary cannot be 0 or less!";
     }
 
     const today = new Date();
